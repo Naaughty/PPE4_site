@@ -5,10 +5,12 @@
         <br>
         <div class="container"> 
             <section class="row">
+                <!-- Création du formulaire de connexion -->
                 <?php echo $this->Form->create('Utilisateur'); ?>
                 <?php echo $this->Form->input('identifiant', array('label' => "Identifiant : ")); ?>
-                <?php echo $this->Form->input('mot_de_passe', array('label' => "Mot de passe : ", 'type' => "password")); ?>
+                <?php echo $this->Form->input('mot_de_passe', array('label' => "Mot de passe : ", 'type' => "password", 'readonly'=> 'readonly')); ?>
                 <?php
+                //On appelle la fonction tableauAleatoire()
                 $tableau = $this->requestAction(array('controller' => 'Utilisateurs',
                     'action' => 'tableauAleatoire'
                 ));

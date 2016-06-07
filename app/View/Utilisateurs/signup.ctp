@@ -15,11 +15,7 @@
     <div class="hero-unit">
         <h2>S'enregistrer</h2>
         <br>
-        <div class="container"> 
-            <section class="row">
-
-            </section>
-        </div>
+        <!-- Création du formulaire d'inscription -->
 <?php echo $this->Form->create('Utilisateur'); ?>
     <?php echo $this->Form->input('identifiant', array('label'=>"Identifiant* : "));?>
     <?php echo $this->Form->input('mot_de_passe', array('label'=>"Mot de passe* : ", 'type'=>"password", 'onKeyPress'=>"return numbersonly(this, event)"));?>
@@ -32,8 +28,8 @@
     <?php echo $this->Form->input('tel_personnel', array('label'=>"Telephone personnel : ", 'type'=>"tel"));?>
     <?php echo $this->Form->input('tel_professionnel', array('label'=>"Telephone professionnel : ", 'type'=>"tel"));?>
     <?php echo $this->Form->input('site_web', array('label'=>"Site Web : ", 'type'=>"url"));?>
-    <?php echo $this->Form->input('annee_entree_promotion', array('label'=>"Année entrée promotion* : ", 'type'=>"text"));?>
-    <?php echo $this->Form->input('annee_sortie_promotion', array('label'=>"Année sortie promotion* : ", 'type'=>"text"));?>
+    <?php echo $this->Form->input('annee_entree_promotion', array('label'=>"Année entrée promotion* : ", 'type'=>"text", 'onKeyPress'=>"return numbersonly(this, event)"));?>
+    <?php echo $this->Form->input('annee_sortie_promotion', array('label'=>"Année sortie promotion* : ", 'type'=>"text", 'onKeyPress'=>"return numbersonly(this, event)"));?>
         
 
 <?php echo $this->Form->end("S'enregistrer"); ?>

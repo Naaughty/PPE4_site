@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -18,7 +19,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -31,11 +31,33 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
-    public $components = array( 'Session', 'Cookie', 'Auth');
-    
+
+    public $components = array('Session', 'Cookie', 'Auth' => array(
+            'loginAction' => array(
+                'controller' => 'Utilisateurs',
+                'action' => 'login'
+            ),
+            'authError' => 'Connexion échouée',
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array(
+                        'username' => 'identifiant', // 'username' par défaut
+                        'password' => 'mot_de_passe'  // 'password' par défaut
+                    ),
+                    'passwordHasher' => array(
+                        'hashType' => 'md5'
+                    )
+                )
+            )
+    ));
+
     function beforeFilter() {
+
+        $this->Auth->authenticate = array(
+            AuthComponent::ALL => array('userModel' => 'Utilisateur')
+        );
+        
         $this->Auth->allow();
     }
-        
+
 }

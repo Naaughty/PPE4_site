@@ -8,9 +8,11 @@
 
 class UtilisateursController extends AppController {
 
+    //Fonction permettant l'inscription
     function signup() {
         if ($this->request->is('post')) {
             $user = $this->request->data;
+            //On définit l'id_utilisateur à null
             $user['Utilisateur']['id_utilisateur'] = null;
 
             //Si le mot de passe n'est pas vide, on le hashe en md5
@@ -29,6 +31,7 @@ class UtilisateursController extends AppController {
         }
     }
 
+    //Fonction permettant la création d'un tableau aléatoire
     function tableauAleatoire() {
 
 //25 cases
@@ -56,6 +59,7 @@ class UtilisateursController extends AppController {
         return $resultat;
     }
 
+    //Fonction de connexion
     function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
@@ -69,9 +73,16 @@ class UtilisateursController extends AppController {
         debug($session);
     }
 
+    //Fonction de deconnexion
     function logout() {
         $this->Auth->logout();
         $this->redirect($this->referer());
+    }
+    
+    //Fonction permettant de trouver tous les utilisateurs dans la base de données
+    function etudiants(){
+        $lesUtilisateurs = $this->Utilisateur->find('all');
+       return $lesUtilisateurs;
     }
 
 }
