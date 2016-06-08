@@ -13,6 +13,7 @@
  */
 class Utilisateur extends AppModel {
 
+    public $useTable = "Utilisateurs";
     //Gestion des règles pour chaque input du formulaire
     public $validate = array(
         //L'identifiant est obligatoire et doit être en alphanumeric et unique

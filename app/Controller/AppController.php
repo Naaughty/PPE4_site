@@ -31,6 +31,9 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    
+        public $helpers = array('Html','Form');
+
 
     public $components = array('Session', 'Cookie', 'Auth' => array(
             'loginAction' => array(
@@ -40,24 +43,24 @@ class AppController extends Controller {
             'authError' => 'Connexion échouée',
             'authenticate' => array(
                 'Form' => array(
+                    'userModel' => 'Utilisateur',
                     'fields' => array(
                         'username' => 'identifiant', // 'username' par défaut
                         'password' => 'mot_de_passe'  // 'password' par défaut
                     ),
                     'passwordHasher' => array(
+                        'className' => 'Simple',
                         'hashType' => 'md5'
                     )
                 )
             )
+
+        
     ));
 
     function beforeFilter() {
 
-        $this->Auth->authenticate = array(
-            AuthComponent::ALL => array('userModel' => 'Utilisateur')
-        );
-        
-        $this->Auth->allow();
+        $this->Auth->allow();  
     }
 
 }

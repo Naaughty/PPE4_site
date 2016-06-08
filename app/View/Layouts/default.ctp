@@ -42,6 +42,9 @@
                                             <ul class="dropdown-menu">
                                                 <?php if (AuthComponent::user('id_utilisateur')): ?>
                                                     <li class="text-info">
+                                                        <?php echo $this->Html->link(" Mon compte", array('action' => 'edit', 'controller' => 'Utilisateurs')); ?>
+                                                    </li>
+                                                    <li class="text-info">
                                                         <?php echo $this->Html->link(" Deconnexion", array('action' => 'logout', 'controller' => 'Utilisateurs')); ?>
                                                     </li>
                                                 <?php else: ?>
